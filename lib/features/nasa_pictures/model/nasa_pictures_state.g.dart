@@ -26,6 +26,8 @@ _$_NasaPicture _$$_NasaPictureFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       title: json['title'] as String,
       date: json['date'] as String,
+      explanation: json['explanation'] as String,
+      url: json['url'] as String,
     );
 
 Map<String, dynamic> _$$_NasaPictureToJson(_$_NasaPicture instance) =>
@@ -33,4 +35,6 @@ Map<String, dynamic> _$$_NasaPictureToJson(_$_NasaPicture instance) =>
       'id': instance.id,
       'title': instance.title,
       'date': instance.date,
+      'explanation': instance.explanation,
+      'url': instance.url,
     };

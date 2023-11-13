@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'nasa_response.dart';
+part of 'nasa_apod_response.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-NasaResponse _$NasaResponseFromJson(Map<String, dynamic> json) {
-  return _NasaResponse.fromJson(json);
+NasaApodResponse _$NasaApodResponseFromJson(Map<String, dynamic> json) {
+  return _NasaApodResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$NasaResponse {
+mixin _$NasaApodResponse {
   String? get copyright => throw _privateConstructorUsedError;
   String? get date => throw _privateConstructorUsedError;
   String? get explanation => throw _privateConstructorUsedError;
@@ -31,15 +31,15 @@ mixin _$NasaResponse {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NasaResponseCopyWith<NasaResponse> get copyWith =>
+  $NasaApodResponseCopyWith<NasaApodResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NasaResponseCopyWith<$Res> {
-  factory $NasaResponseCopyWith(
-          NasaResponse value, $Res Function(NasaResponse) then) =
-      _$NasaResponseCopyWithImpl<$Res, NasaResponse>;
+abstract class $NasaApodResponseCopyWith<$Res> {
+  factory $NasaApodResponseCopyWith(
+          NasaApodResponse value, $Res Function(NasaApodResponse) then) =
+      _$NasaApodResponseCopyWithImpl<$Res, NasaApodResponse>;
   @useResult
   $Res call(
       {String? copyright,
@@ -53,9 +53,9 @@ abstract class $NasaResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NasaResponseCopyWithImpl<$Res, $Val extends NasaResponse>
-    implements $NasaResponseCopyWith<$Res> {
-  _$NasaResponseCopyWithImpl(this._value, this._then);
+class _$NasaApodResponseCopyWithImpl<$Res, $Val extends NasaApodResponse>
+    implements $NasaApodResponseCopyWith<$Res> {
+  _$NasaApodResponseCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -112,11 +112,11 @@ class _$NasaResponseCopyWithImpl<$Res, $Val extends NasaResponse>
 }
 
 /// @nodoc
-abstract class _$$_NasaResponseCopyWith<$Res>
-    implements $NasaResponseCopyWith<$Res> {
-  factory _$$_NasaResponseCopyWith(
-          _$_NasaResponse value, $Res Function(_$_NasaResponse) then) =
-      __$$_NasaResponseCopyWithImpl<$Res>;
+abstract class _$$_NasaApodResponseCopyWith<$Res>
+    implements $NasaApodResponseCopyWith<$Res> {
+  factory _$$_NasaApodResponseCopyWith(
+          _$_NasaApodResponse value, $Res Function(_$_NasaApodResponse) then) =
+      __$$_NasaApodResponseCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -131,11 +131,11 @@ abstract class _$$_NasaResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_NasaResponseCopyWithImpl<$Res>
-    extends _$NasaResponseCopyWithImpl<$Res, _$_NasaResponse>
-    implements _$$_NasaResponseCopyWith<$Res> {
-  __$$_NasaResponseCopyWithImpl(
-      _$_NasaResponse _value, $Res Function(_$_NasaResponse) _then)
+class __$$_NasaApodResponseCopyWithImpl<$Res>
+    extends _$NasaApodResponseCopyWithImpl<$Res, _$_NasaApodResponse>
+    implements _$$_NasaApodResponseCopyWith<$Res> {
+  __$$_NasaApodResponseCopyWithImpl(
+      _$_NasaApodResponse _value, $Res Function(_$_NasaApodResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -150,7 +150,7 @@ class __$$_NasaResponseCopyWithImpl<$Res>
     Object? title = freezed,
     Object? url = freezed,
   }) {
-    return _then(_$_NasaResponse(
+    return _then(_$_NasaApodResponse(
       copyright: freezed == copyright
           ? _value.copyright
           : copyright // ignore: cast_nullable_to_non_nullable
@@ -189,8 +189,8 @@ class __$$_NasaResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_NasaResponse implements _NasaResponse {
-  const _$_NasaResponse(
+class _$_NasaApodResponse implements _NasaApodResponse {
+  const _$_NasaApodResponse(
       {this.copyright,
       this.date,
       this.explanation,
@@ -200,8 +200,8 @@ class _$_NasaResponse implements _NasaResponse {
       this.title,
       this.url});
 
-  factory _$_NasaResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_NasaResponseFromJson(json);
+  factory _$_NasaApodResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_NasaApodResponseFromJson(json);
 
   @override
   final String? copyright;
@@ -222,14 +222,14 @@ class _$_NasaResponse implements _NasaResponse {
 
   @override
   String toString() {
-    return 'NasaResponse(copyright: $copyright, date: $date, explanation: $explanation, hdurl: $hdurl, media_type: $media_type, service_version: $service_version, title: $title, url: $url)';
+    return 'NasaApodResponse(copyright: $copyright, date: $date, explanation: $explanation, hdurl: $hdurl, media_type: $media_type, service_version: $service_version, title: $title, url: $url)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NasaResponse &&
+            other is _$_NasaApodResponse &&
             (identical(other.copyright, copyright) ||
                 other.copyright == copyright) &&
             (identical(other.date, date) || other.date == date) &&
@@ -252,19 +252,19 @@ class _$_NasaResponse implements _NasaResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NasaResponseCopyWith<_$_NasaResponse> get copyWith =>
-      __$$_NasaResponseCopyWithImpl<_$_NasaResponse>(this, _$identity);
+  _$$_NasaApodResponseCopyWith<_$_NasaApodResponse> get copyWith =>
+      __$$_NasaApodResponseCopyWithImpl<_$_NasaApodResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NasaResponseToJson(
+    return _$$_NasaApodResponseToJson(
       this,
     );
   }
 }
 
-abstract class _NasaResponse implements NasaResponse {
-  const factory _NasaResponse(
+abstract class _NasaApodResponse implements NasaApodResponse {
+  const factory _NasaApodResponse(
       {final String? copyright,
       final String? date,
       final String? explanation,
@@ -272,10 +272,10 @@ abstract class _NasaResponse implements NasaResponse {
       final String? media_type,
       final String? service_version,
       final String? title,
-      final String? url}) = _$_NasaResponse;
+      final String? url}) = _$_NasaApodResponse;
 
-  factory _NasaResponse.fromJson(Map<String, dynamic> json) =
-      _$_NasaResponse.fromJson;
+  factory _NasaApodResponse.fromJson(Map<String, dynamic> json) =
+      _$_NasaApodResponse.fromJson;
 
   @override
   String? get copyright;
@@ -295,6 +295,6 @@ abstract class _NasaResponse implements NasaResponse {
   String? get url;
   @override
   @JsonKey(ignore: true)
-  _$$_NasaResponseCopyWith<_$_NasaResponse> get copyWith =>
+  _$$_NasaApodResponseCopyWith<_$_NasaApodResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }

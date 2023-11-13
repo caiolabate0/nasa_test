@@ -18,6 +18,8 @@ class NasaPicture with _$NasaPicture {
     required int id,
     required String title,
     required String date,
+    required String explanation,
+    required String url,
   }) = _NasaPicture;
 
   factory NasaPicture.fromJson(Map<String, dynamic> json) =>

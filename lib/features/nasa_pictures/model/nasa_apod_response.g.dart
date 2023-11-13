@@ -1,13 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'nasa_response.dart';
+// ignore_for_file: non_constant_identifier_names
+
+part of 'nasa_apod_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_NasaResponse _$$_NasaResponseFromJson(Map<String, dynamic> json) =>
-    _$_NasaResponse(
+_$_NasaApodResponse _$$_NasaApodResponseFromJson(Map<String, dynamic> json) =>
+    _$_NasaApodResponse(
       copyright: json['copyright'] as String?,
       date: json['date'] as String?,
       explanation: json['explanation'] as String?,
@@ -18,7 +20,7 @@ _$_NasaResponse _$$_NasaResponseFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String?,
     );
 
-Map<String, dynamic> _$$_NasaResponseToJson(_$_NasaResponse instance) =>
+Map<String, dynamic> _$$_NasaApodResponseToJson(_$_NasaApodResponse instance) =>
     <String, dynamic>{
       'copyright': instance.copyright,
       'date': instance.date,

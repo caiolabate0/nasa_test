@@ -168,6 +168,8 @@ mixin _$NasaPicture {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
+  String get explanation => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -181,7 +183,8 @@ abstract class $NasaPictureCopyWith<$Res> {
           NasaPicture value, $Res Function(NasaPicture) then) =
       _$NasaPictureCopyWithImpl<$Res, NasaPicture>;
   @useResult
-  $Res call({int id, String title, String date});
+  $Res call(
+      {int id, String title, String date, String explanation, String url});
 }
 
 /// @nodoc
@@ -200,6 +203,8 @@ class _$NasaPictureCopyWithImpl<$Res, $Val extends NasaPicture>
     Object? id = null,
     Object? title = null,
     Object? date = null,
+    Object? explanation = null,
+    Object? url = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -214,6 +219,14 @@ class _$NasaPictureCopyWithImpl<$Res, $Val extends NasaPicture>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
+      explanation: null == explanation
+          ? _value.explanation
+          : explanation // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -226,7 +239,8 @@ abstract class _$$_NasaPictureCopyWith<$Res>
       __$$_NasaPictureCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String title, String date});
+  $Res call(
+      {int id, String title, String date, String explanation, String url});
 }
 
 /// @nodoc
@@ -243,6 +257,8 @@ class __$$_NasaPictureCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? date = null,
+    Object? explanation = null,
+    Object? url = null,
   }) {
     return _then(_$_NasaPicture(
       id: null == id
@@ -257,6 +273,14 @@ class __$$_NasaPictureCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
+      explanation: null == explanation
+          ? _value.explanation
+          : explanation // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -265,7 +289,11 @@ class __$$_NasaPictureCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_NasaPicture implements _NasaPicture {
   const _$_NasaPicture(
-      {required this.id, required this.title, required this.date});
+      {required this.id,
+      required this.title,
+      required this.date,
+      required this.explanation,
+      required this.url});
 
   factory _$_NasaPicture.fromJson(Map<String, dynamic> json) =>
       _$$_NasaPictureFromJson(json);
@@ -276,10 +304,14 @@ class _$_NasaPicture implements _NasaPicture {
   final String title;
   @override
   final String date;
+  @override
+  final String explanation;
+  @override
+  final String url;
 
   @override
   String toString() {
-    return 'NasaPicture(id: $id, title: $title, date: $date)';
+    return 'NasaPicture(id: $id, title: $title, date: $date, explanation: $explanation, url: $url)';
   }
 
   @override
@@ -289,12 +321,16 @@ class _$_NasaPicture implements _NasaPicture {
             other is _$_NasaPicture &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.date, date) || other.date == date));
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.explanation, explanation) ||
+                other.explanation == explanation) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, date);
+  int get hashCode =>
+      Object.hash(runtimeType, id, title, date, explanation, url);
 
   @JsonKey(ignore: true)
   @override
@@ -314,7 +350,9 @@ abstract class _NasaPicture implements NasaPicture {
   const factory _NasaPicture(
       {required final int id,
       required final String title,
-      required final String date}) = _$_NasaPicture;
+      required final String date,
+      required final String explanation,
+      required final String url}) = _$_NasaPicture;
 
   factory _NasaPicture.fromJson(Map<String, dynamic> json) =
       _$_NasaPicture.fromJson;
@@ -325,6 +363,10 @@ abstract class _NasaPicture implements NasaPicture {
   String get title;
   @override
   String get date;
+  @override
+  String get explanation;
+  @override
+  String get url;
   @override
   @JsonKey(ignore: true)
   _$$_NasaPictureCopyWith<_$_NasaPicture> get copyWith =>

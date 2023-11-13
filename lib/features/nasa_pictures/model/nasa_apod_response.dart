@@ -2,12 +2,12 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'nasa_response.freezed.dart';
-part 'nasa_response.g.dart';
+part 'nasa_apod_response.freezed.dart';
+part 'nasa_apod_response.g.dart';
 
 @freezed
-class NasaResponse with _$NasaResponse {
-  const factory NasaResponse({
+class NasaApodResponse with _$NasaApodResponse {
+  const factory NasaApodResponse({
     String? copyright,
     String? date,
     String? explanation,
@@ -16,8 +16,8 @@ class NasaResponse with _$NasaResponse {
     String? service_version,
     String? title,
     String? url,
-  }) = _NasaResponse;
+  }) = _NasaApodResponse;
 
-  factory NasaResponse.fromJson(Map<String, dynamic> json) =>
-      _$NasaResponseFromJson(json);
+  factory NasaApodResponse.fromJson(Map<String, dynamic> json) =>
+      _$NasaApodResponseFromJson(json);
 }

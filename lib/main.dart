@@ -1,35 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nasa_test/home_screen.dart';
+import 'package:nasa_test/config/nasa_module.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ModularApp(
+      module: NasaAppModule(), child: const ProviderScope(child: NasaApp())));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class NasaApp extends StatelessWidget {
+  const NasaApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    Modular.setInitialRoute(Modular.initialRoute);
+    return MaterialApp.router(
+      title: 'Nasa App Project',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // routes: {
-      //   '/': (context) => HomeScreen(),
-      //   '/details': (context) => DetailScreen(),
-      // },
-      home: const ProviderScope(child: HomeScreen()),
+      routeInformationParser: Modular.routeInformationParser,
+      routerDelegate: Modular.routerDelegate,
     );
-  }
-}
-
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
