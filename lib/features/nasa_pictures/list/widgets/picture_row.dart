@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nasa_test/config/extension/date_extension.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_pictures_state.dart';
 
 class PictureRow extends StatelessWidget {
@@ -28,7 +29,7 @@ class PictureRow extends StatelessWidget {
                     children: [
                       Text(picture.title),
                       Text(
-                        picture.date,
+                        picture.date.convertToFormat() ?? '-',
                         style: const TextStyle(color: Colors.grey),
                       ),
                     ],

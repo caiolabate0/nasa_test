@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nasa_test/config/extension/date_extension.dart';
 import 'package:nasa_test/features/nasa_pictures/details/nasa_pictures_mixin.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_pictures_state.dart';
 
@@ -36,7 +37,9 @@ class _NasaPicturesDetailsState extends ConsumerState<NasaPicturesDetails>
                 children: [
                   _ImageData(url: checkHdUrl(image)),
                   _TextInfo(title: 'Title:', value: image.title),
-                  _TextInfo(title: 'Date:', value: image.date),
+                  _TextInfo(
+                      title: 'Date:',
+                      value: image.date.convertToFormat() ?? '-'),
                   _TextInfo(title: 'Explanation:', value: image.explanation),
                 ],
               ),
