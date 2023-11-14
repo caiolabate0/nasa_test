@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nasa_test/features/nasa_pictures/details/nasa_pictures_mixin.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_pictures_state.dart';
 
 class NasaPicturesDetails extends ConsumerStatefulWidget {
@@ -12,10 +13,12 @@ class NasaPicturesDetails extends ConsumerStatefulWidget {
       _NasaPicturesDetailsState();
 }
 
-class _NasaPicturesDetailsState extends ConsumerState<NasaPicturesDetails> {
+class _NasaPicturesDetailsState extends ConsumerState<NasaPicturesDetails>
+    with NasaPicturesMixin {
   @override
   Widget build(BuildContext context) {
     final NasaPicture image = widget.args;
+
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
@@ -31,7 +34,7 @@ class _NasaPicturesDetailsState extends ConsumerState<NasaPicturesDetails> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _ImageData(url: image.url),
+                  _ImageData(url: checkHdUrl(image)),
                   _TextInfo(title: 'Title:', value: image.title),
                   _TextInfo(title: 'Date:', value: image.date),
                   _TextInfo(title: 'Explanation:', value: image.explanation),

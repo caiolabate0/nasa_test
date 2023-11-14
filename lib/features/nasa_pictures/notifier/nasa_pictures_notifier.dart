@@ -14,7 +14,8 @@ final nasaPictureNotifierProvider =
         title: e.title ?? '',
         date: e.date ?? '',
         url: e.url ?? '',
-        explanation: e.explanation ?? '');
+        explanation: e.explanation ?? '',
+        hdUrl: e.hdurl);
     return picture;
   }).toList());
 });

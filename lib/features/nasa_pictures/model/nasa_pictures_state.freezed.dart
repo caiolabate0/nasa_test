@@ -170,6 +170,7 @@ mixin _$NasaPicture {
   String get date => throw _privateConstructorUsedError;
   String get explanation => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
+  String? get hdUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -184,7 +185,12 @@ abstract class $NasaPictureCopyWith<$Res> {
       _$NasaPictureCopyWithImpl<$Res, NasaPicture>;
   @useResult
   $Res call(
-      {int id, String title, String date, String explanation, String url});
+      {int id,
+      String title,
+      String date,
+      String explanation,
+      String url,
+      String? hdUrl});
 }
 
 /// @nodoc
@@ -205,6 +211,7 @@ class _$NasaPictureCopyWithImpl<$Res, $Val extends NasaPicture>
     Object? date = null,
     Object? explanation = null,
     Object? url = null,
+    Object? hdUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -227,6 +234,10 @@ class _$NasaPictureCopyWithImpl<$Res, $Val extends NasaPicture>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      hdUrl: freezed == hdUrl
+          ? _value.hdUrl
+          : hdUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -240,7 +251,12 @@ abstract class _$$_NasaPictureCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id, String title, String date, String explanation, String url});
+      {int id,
+      String title,
+      String date,
+      String explanation,
+      String url,
+      String? hdUrl});
 }
 
 /// @nodoc
@@ -259,6 +275,7 @@ class __$$_NasaPictureCopyWithImpl<$Res>
     Object? date = null,
     Object? explanation = null,
     Object? url = null,
+    Object? hdUrl = freezed,
   }) {
     return _then(_$_NasaPicture(
       id: null == id
@@ -281,6 +298,10 @@ class __$$_NasaPictureCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      hdUrl: freezed == hdUrl
+          ? _value.hdUrl
+          : hdUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -293,7 +314,8 @@ class _$_NasaPicture implements _NasaPicture {
       required this.title,
       required this.date,
       required this.explanation,
-      required this.url});
+      required this.url,
+      this.hdUrl});
 
   factory _$_NasaPicture.fromJson(Map<String, dynamic> json) =>
       _$$_NasaPictureFromJson(json);
@@ -308,10 +330,12 @@ class _$_NasaPicture implements _NasaPicture {
   final String explanation;
   @override
   final String url;
+  @override
+  final String? hdUrl;
 
   @override
   String toString() {
-    return 'NasaPicture(id: $id, title: $title, date: $date, explanation: $explanation, url: $url)';
+    return 'NasaPicture(id: $id, title: $title, date: $date, explanation: $explanation, url: $url, hdUrl: $hdUrl)';
   }
 
   @override
@@ -324,13 +348,14 @@ class _$_NasaPicture implements _NasaPicture {
             (identical(other.date, date) || other.date == date) &&
             (identical(other.explanation, explanation) ||
                 other.explanation == explanation) &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.hdUrl, hdUrl) || other.hdUrl == hdUrl));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, title, date, explanation, url);
+      Object.hash(runtimeType, id, title, date, explanation, url, hdUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -352,7 +377,8 @@ abstract class _NasaPicture implements NasaPicture {
       required final String title,
       required final String date,
       required final String explanation,
-      required final String url}) = _$_NasaPicture;
+      required final String url,
+      final String? hdUrl}) = _$_NasaPicture;
 
   factory _NasaPicture.fromJson(Map<String, dynamic> json) =
       _$_NasaPicture.fromJson;
@@ -367,6 +393,8 @@ abstract class _NasaPicture implements NasaPicture {
   String get explanation;
   @override
   String get url;
+  @override
+  String? get hdUrl;
   @override
   @JsonKey(ignore: true)
   _$$_NasaPictureCopyWith<_$_NasaPicture> get copyWith =>

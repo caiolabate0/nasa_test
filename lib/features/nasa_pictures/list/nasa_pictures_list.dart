@@ -36,27 +36,23 @@ class _NasaPicturesListState extends ConsumerState<NasaPicturesList> {
         body: SafeArea(
           child: state.when(
               data: (data) {
-                return RefreshIndicator(
-                  onRefresh: _refresh,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: data.pictures.length + 1,
-                        itemBuilder: (context, index) {
-                          return (index == data.pictures.length)
-                              ? ElevatedButton(
-                                  child: const Text("Load More"),
-                                  onPressed: () {
-                                    _refresh(loadMore: true);
-                                  },
-                                )
-                              : PictureRow(
-                                  picture: data.pictures[index],
-                                  onTap: () =>
-                                      _seeDetails(data.pictures[index]));
-                        }),
-                  ),
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: data.pictures.length + 1,
+                      itemBuilder: (context, index) {
+                        return (index == data.pictures.length)
+                            ? ElevatedButton(
+                                child: const Text("Load More"),
+                                onPressed: () {
+                                  _refresh(loadMore: true);
+                                },
+                              )
+                            : PictureRow(
+                                picture: data.pictures[index],
+                                onTap: () => _seeDetails(data.pictures[index]));
+                      }),
                 );
               },
               error: (error, stackTrace) {

@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: non_constant_identifier_names
-
 part of 'nasa_pictures_state.dart';
 
 // **************************************************************************
@@ -28,6 +26,7 @@ _$_NasaPicture _$$_NasaPictureFromJson(Map<String, dynamic> json) =>
       date: json['date'] as String,
       explanation: json['explanation'] as String,
       url: json['url'] as String,
+      hdUrl: json['hdUrl'] as String?,
     );
 
 Map<String, dynamic> _$$_NasaPictureToJson(_$_NasaPicture instance) =>
@@ -37,4 +36,5 @@ Map<String, dynamic> _$$_NasaPictureToJson(_$_NasaPicture instance) =>
       'date': instance.date,
       'explanation': instance.explanation,
       'url': instance.url,
+      'hdUrl': instance.hdUrl,
     };

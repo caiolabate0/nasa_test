@@ -1,10 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// final dioProvider = Provider((ref) {
-//   return NetworkClient(_client)
-// });
-
 final networkClientProvider = Provider((ref) {
   var dio = Dio();
   return NetworkClient(dio);

@@ -10,17 +10,6 @@ class AppHomePage extends StatefulWidget {
 
 class _AppHomePageState extends State<AppHomePage> {
   @override
-  void initState() {
-    _startNavigation();
-    super.initState();
-  }
-
-  _startNavigation() async {
-    await Future.delayed(const Duration(milliseconds: 1000));
-    Modular.to.navigate('/list');
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(

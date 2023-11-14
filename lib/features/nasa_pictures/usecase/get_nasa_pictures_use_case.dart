@@ -3,8 +3,8 @@
 import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nasa_test/config/local_storage/local_storage.dart';
+import 'package:nasa_test/config/network/network_client.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_apod_response.dart';
-import 'package:nasa_test/config/network/dio_client.dart';
 import 'package:nasa_test/config/auth/keys.dart';
 
 const NASA_APOD_FETCH_KEY = 'NasaApodResponse-Fetch';
