@@ -4,8 +4,10 @@ import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nasa_test/config/local_storage/local_storage.dart';
 import 'package:nasa_test/config/network/network_client.dart';
+import 'package:nasa_test/features/nasa_pictures/details/nasa_pictures_mixin.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_apod_response.dart';
 import 'package:nasa_test/config/auth/keys.dart';
+import 'package:nasa_test/features/nasa_pictures/notifier/nasa_pictures_notifier.dart';
 
 const NASA_APOD_FETCH_KEY = 'NasaApodResponse-Fetch';
 
@@ -13,41 +15,38 @@ final getNasaPicturesUseCaseProvider = Provider<GetNasaPicturesUseCase>((ref) =>
     GetNasaPicturesUseCase(
         ref.read(networkClientProvider), ref.read(localStorageProvider)));
 
-class GetNasaPicturesUseCase {
+class GetNasaPicturesUseCase with NasaPicturesMixin {
   final NetworkClient _client;
   final LocalStorage _localStorage;
   GetNasaPicturesUseCase(this._client, this._localStorage);
 
-  Future<List<NasaApodResponse>> execute(int visiblePicsQt) async {
+  Future<List<NasaApodResponse>> execute(NasaArguments arguments) async {
     // await _localStorage.deleteKey('NasaApodResponse-Fetch');
     try {
+      const int picsRequest = 15;
       const url =
-          'https://api.nasa.gov/planetary/apod?api_key=$API_KEY&count=5';
+          'https://api.nasa.gov/planetary/apod?api_key=$API_KEY&count=$picsRequest';
       final response = await _client.get(url);
       final List<NasaApodResponse> picturesList = List.from(response.data
           .map<NasaApodResponse>((i) => NasaApodResponse.fromJson(i)));
 
-      return _buildData(
-          key: NASA_APOD_FETCH_KEY,
-          picturesList: picturesList,
-          visiblePicsQt: visiblePicsQt);
+      final List<NasaApodResponse> storageList = await _buildData(
+          key: NASA_APOD_FETCH_KEY, picturesList: picturesList);
+      return buildVisibleData(list: storageList, arguments: arguments);
     } catch (e) {
-      return _buildData(
-          key: NASA_APOD_FETCH_KEY,
-          picturesList: [],
-          visiblePicsQt: visiblePicsQt);
+      final List<NasaApodResponse> storageList =
+          await _buildData(key: NASA_APOD_FETCH_KEY, picturesList: []);
+      return buildVisibleData(list: storageList, arguments: arguments);
     }
   }
 
   Future<List<NasaApodResponse>> _buildData(
       {required String key,
-      required List<NasaApodResponse> picturesList,
-      required int visiblePicsQt}) async {
+      required List<NasaApodResponse> picturesList}) async {
     List<NasaApodResponse> storageList = await _readData(key);
     storageList.addAll(picturesList);
     _saveData(key, storageList);
-
-    return storageList.take(visiblePicsQt).toList();
+    return storageList;
   }
 
   void _saveData(String key, List<NasaApodResponse> picturesList) async {

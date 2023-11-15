@@ -4,6 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:nasa_test/config/local_storage/local_storage.dart';
 import 'package:nasa_test/config/network/network_client.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_apod_response.dart';
+import 'package:nasa_test/features/nasa_pictures/notifier/nasa_pictures_notifier.dart';
 import 'package:nasa_test/features/nasa_pictures/usecase/get_nasa_pictures_use_case.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:nasa_test/config/auth/keys.dart';
@@ -45,7 +46,7 @@ void main() {
     mockCallRequest().thenAnswer(
       (_) async => NasaApodMock.makeJson(),
     );
-    await sut.execute(cardsQt);
+    await sut.execute(const NasaArguments(interval: cardsQt));
 
     verify(() => networkClientSpy.get(url)).called(1);
   });
@@ -56,7 +57,7 @@ void main() {
     mockCallRequest().thenAnswer(
       (_) async => NasaApodMock.makeJson(),
     );
-    final result = await sut.execute(cardsQt);
+    final result = await sut.execute(const NasaArguments(interval: cardsQt));
     expect(result.runtimeType, success.runtimeType);
   });
 
@@ -64,7 +65,7 @@ void main() {
       'WHEN request fail THEN must not throw an Error, otherwise must return a list recovered from local storage',
       () async {
     mockCallRequest().thenThrow(failure);
-    final result = await sut.execute(cardsQt);
+    final result = await sut.execute(const NasaArguments(interval: cardsQt));
     expect(result.runtimeType, success.runtimeType);
   });
 }

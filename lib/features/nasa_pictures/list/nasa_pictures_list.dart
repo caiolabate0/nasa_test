@@ -17,18 +17,22 @@ class NasaPicturesList extends ConsumerStatefulWidget {
 }
 
 class _NasaPicturesListState extends ConsumerState<NasaPicturesList> {
+  TextEditingController controller = TextEditingController();
   int interval = 5;
+  String? filter;
+
   Future<void> _refresh({bool loadMore = false}) {
-    if (loadMore) {
-      interval = interval + 5;
-    }
-    setState(() => ref.refresh(nasaPictureNotifierProvider(interval)));
+    setState(() {
+      if (loadMore) interval = interval + 5;
+      filter = controller.text;
+    });
     return Future.value();
   }
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(nasaPictureNotifierProvider(interval));
+    final state = ref.watch(nasaPictureNotifierProvider(
+        NasaArguments(interval: interval, filter: filter)));
     return Scaffold(
         appBar: AppBar(
           title: const Text('Nasa Pictures List'),
@@ -38,26 +42,67 @@ class _NasaPicturesListState extends ConsumerState<NasaPicturesList> {
               data: (data) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: data.pictures.length + 1,
-                      itemBuilder: (context, index) {
-                        return (index == data.pictures.length)
-                            ? ElevatedButton(
-                                child: const Text("Load More"),
-                                onPressed: () {
-                                  _refresh(loadMore: true);
-                                },
-                              )
-                            : PictureRow(
-                                picture: data.pictures[index],
-                                onTap: () => _seeDetails(data.pictures[index]));
-                      }),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 30),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.6,
+                                child: TextFormField(
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    hintText: ("Search by name"),
+                                  ),
+                                  controller: controller,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 55,
+                                width: MediaQuery.of(context).size.width * 0.25,
+                                child: ElevatedButton(
+                                  child: const Text("Search"),
+                                  onPressed: () {
+                                    _refresh();
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: data.pictures.length + 1,
+                            itemBuilder: (context, index) {
+                              return (index == data.pictures.length)
+                                  ? ElevatedButton(
+                                      child: const Text("Load More"),
+                                      onPressed: () {
+                                        _refresh(loadMore: true);
+                                      },
+                                    )
+                                  : PictureRow(
+                                      picture: data.pictures[index],
+                                      onTap: () =>
+                                          _seeDetails(data.pictures[index]));
+                            }),
+                      ],
+                    ),
+                  ),
                 );
               },
               error: (error, stackTrace) {
                 return ErrorPage(
-                    error: 'Could not load pictures!', onRefresh: _refresh);
+                    error: 'Could not load pictures!',
+                    onRefresh: () {
+                      _refresh();
+                    });
               },
               loading: () => const Center(child: CircularProgressIndicator())),
         ));

@@ -8,10 +8,13 @@ void main() {
       'WHEN nasaPictureNotifierProvider is called THEN first AsyncValue state should be loading',
       () {
     final container = ProviderContainer(
-      overrides: [nasaPictureNotifierProvider(5)],
+      overrides: [
+        nasaPictureNotifierProvider(const NasaArguments(interval: 5))
+      ],
     );
     expect(
-      container.read(nasaPictureNotifierProvider(5)),
+      container
+          .read(nasaPictureNotifierProvider(const NasaArguments(interval: 5))),
       equals(const AsyncValue<NasaPicturesState>.loading()),
     );
     addTearDown(container.dispose);
