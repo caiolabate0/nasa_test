@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nasa_test/config/extension/date_extension.dart';
-import 'package:nasa_test/features/nasa_pictures/details/nasa_pictures_mixin.dart';
+import 'package:nasa_test/shared/nasa_pictures_view_mixin.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_pictures_state.dart';
 
 class NasaPicturesDetails extends ConsumerStatefulWidget {
@@ -15,7 +15,7 @@ class NasaPicturesDetails extends ConsumerStatefulWidget {
 }
 
 class _NasaPicturesDetailsState extends ConsumerState<NasaPicturesDetails>
-    with NasaPicturesMixin {
+    with NasaPicturesViewMixin {
   @override
   Widget build(BuildContext context) {
     final NasaPicture image = widget.args;

@@ -1,19 +1,19 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nasa_test/features/nasa_pictures/details/nasa_pictures_mixin.dart';
+import 'package:nasa_test/shared/nasa_pictures_view_mixin.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_apod_response.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_pictures_state.dart';
 import 'package:nasa_test/features/nasa_pictures/notifier/nasa_pictures_notifier.dart';
 
 import '../mock/nasa_apod_mock.dart';
 
-class NasaPicturesMixinTest with NasaPicturesMixin {}
+class NasaPicturesViewMixinTest with NasaPicturesViewMixin {}
 
 void main() {
   group('Test mixin.buildVisibleData method...', () {
     test(
         'WHEN method called THEN it should return the same lenght defined on interval parameter',
         () {
-      final mixin = NasaPicturesMixinTest();
+      final mixin = NasaPicturesViewMixinTest();
       const int interval = 3;
       const NasaArguments arguments = NasaArguments(interval: interval);
       List<NasaApodResponse> list = List.from(
@@ -26,7 +26,7 @@ void main() {
     test(
         'WHEN filter is passed THEN it should filter list where elements contain search text passed',
         () {
-      final mixin = NasaPicturesMixinTest();
+      final mixin = NasaPicturesViewMixinTest();
       const int interval = 5;
       const String filter = 'mars';
       const NasaArguments arguments =
@@ -49,7 +49,7 @@ void main() {
     test(
         'WHEN image has a HD URL THEN it should return this corresponding HD Url',
         () {
-      final mixin = NasaPicturesMixinTest();
+      final mixin = NasaPicturesViewMixinTest();
       const NasaPicture imageWithHdUrl = NasaPicture(
           id: 1,
           title: 'title',
@@ -65,7 +65,7 @@ void main() {
     test(
         'WHEN image DO NOT HAS a HD URL THEN it should return this corresponding regular Url',
         () {
-      final mixin = NasaPicturesMixinTest();
+      final mixin = NasaPicturesViewMixinTest();
       const NasaPicture imageWithoutHdUrl = NasaPicture(
           id: 1,
           title: 'title',

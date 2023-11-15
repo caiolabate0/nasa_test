@@ -18,12 +18,12 @@ class NasaPicturesList extends ConsumerStatefulWidget {
 
 class _NasaPicturesListState extends ConsumerState<NasaPicturesList> {
   TextEditingController controller = TextEditingController();
-  int interval = 5;
+  int interval = 10;
   String? filter;
 
   Future<void> _refresh({bool loadMore = false}) {
     setState(() {
-      if (loadMore) interval = interval + 5;
+      if (loadMore) interval = interval + 10;
       filter = controller.text;
     });
     return Future.value();
@@ -55,8 +55,12 @@ class _NasaPicturesListState extends ConsumerState<NasaPicturesList> {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.6,
                                 child: TextFormField(
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
+                                  decoration: InputDecoration(
+                                    suffixIcon: IconButton(
+                                      onPressed: () => controller.clear(),
+                                      icon: const Icon(Icons.clear),
+                                    ),
+                                    border: const OutlineInputBorder(),
                                     hintText: ("Search by name"),
                                   ),
                                   controller: controller,

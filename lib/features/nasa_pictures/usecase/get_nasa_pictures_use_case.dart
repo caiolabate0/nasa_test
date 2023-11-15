@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nasa_test/config/local_storage/local_storage.dart';
 import 'package:nasa_test/config/network/network_client.dart';
-import 'package:nasa_test/features/nasa_pictures/details/nasa_pictures_mixin.dart';
+import 'package:nasa_test/shared/nasa_pictures_view_mixin.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_apod_response.dart';
 import 'package:nasa_test/config/auth/keys.dart';
 import 'package:nasa_test/features/nasa_pictures/notifier/nasa_pictures_notifier.dart';
@@ -15,7 +15,7 @@ final getNasaPicturesUseCaseProvider = Provider<GetNasaPicturesUseCase>((ref) =>
     GetNasaPicturesUseCase(
         ref.read(networkClientProvider), ref.read(localStorageProvider)));
 
-class GetNasaPicturesUseCase with NasaPicturesMixin {
+class GetNasaPicturesUseCase with NasaPicturesViewMixin {
   final NetworkClient _client;
   final LocalStorage _localStorage;
   GetNasaPicturesUseCase(this._client, this._localStorage);

@@ -2,7 +2,7 @@ import 'package:nasa_test/features/nasa_pictures/model/nasa_apod_response.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_pictures_state.dart';
 import 'package:nasa_test/features/nasa_pictures/notifier/nasa_pictures_notifier.dart';
 
-class NasaPicturesMixin {
+class NasaPicturesViewMixin {
   List<NasaApodResponse> buildVisibleData(
       {required List<NasaApodResponse> list,
       required NasaArguments arguments}) {
