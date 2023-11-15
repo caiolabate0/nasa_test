@@ -20,7 +20,7 @@ void main() {
   late List<NasaApodResponse> success;
   late DioException failure;
 
-  const int cardsQt = 5;
+  const int cardsQt = 10;
   const String url =
       'https://api.nasa.gov/planetary/apod?api_key=$API_KEY&count=$cardsQt';
 

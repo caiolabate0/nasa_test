@@ -79,23 +79,26 @@ class _NasaPicturesListState extends ConsumerState<NasaPicturesList> {
                             ],
                           ),
                         ),
-                        ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: data.pictures.length + 1,
-                            itemBuilder: (context, index) {
-                              return (index == data.pictures.length)
-                                  ? ElevatedButton(
-                                      child: const Text("Load More"),
-                                      onPressed: () {
-                                        _refresh(loadMore: true);
-                                      },
-                                    )
-                                  : PictureRow(
-                                      picture: data.pictures[index],
-                                      onTap: () =>
-                                          _seeDetails(data.pictures[index]));
-                            }),
+                        (data.pictures.isEmpty)
+                            ? const Text(
+                                'No pictures found. Please search again!')
+                            : ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: data.pictures.length + 1,
+                                itemBuilder: (context, index) {
+                                  return (index == data.pictures.length)
+                                      ? ElevatedButton(
+                                          child: const Text("Load More"),
+                                          onPressed: () {
+                                            _refresh(loadMore: true);
+                                          },
+                                        )
+                                      : PictureRow(
+                                          picture: data.pictures[index],
+                                          onTap: () => _seeDetails(
+                                              data.pictures[index]));
+                                }),
                       ],
                     ),
                   ),

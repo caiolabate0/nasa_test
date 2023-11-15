@@ -23,7 +23,7 @@ class GetNasaPicturesUseCase with NasaPicturesViewMixin {
   Future<List<NasaApodResponse>> execute(NasaArguments arguments) async {
     // await _localStorage.deleteKey('NasaApodResponse-Fetch');
     try {
-      const int picsRequest = 15;
+      const int picsRequest = 10;
       const url =
           'https://api.nasa.gov/planetary/apod?api_key=$API_KEY&count=$picsRequest';
       final response = await _client.get(url);
@@ -49,10 +49,12 @@ class GetNasaPicturesUseCase with NasaPicturesViewMixin {
     return storageList;
   }
 
+  // save data to local storage
   void _saveData(String key, List<NasaApodResponse> picturesList) async {
     await _localStorage.setString(key, json.encode(picturesList));
   }
 
+  // read and return data from local storage
   Future<List<NasaApodResponse>> _readData(String key) async {
     final String storageList = await _localStorage.getString(key) ?? '';
     List decodedList = storageList.isNotEmpty ? json.decode(storageList) : [];
