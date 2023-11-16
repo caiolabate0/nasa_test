@@ -22,7 +22,7 @@ void main() {
 
   const int cardsQt = 10;
   const String url =
-      'https://api.nasa.gov/planetary/apod?api_key=$API_KEY&count=$cardsQt';
+      'apod?api_key=$API_KEY&count=$cardsQt';
 
   When mockCallRequest() => when(() => networkClientSpy.get(url));
 
