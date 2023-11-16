@@ -9,7 +9,7 @@ import '../mock/nasa_apod_mock.dart';
 class NasaPicturesViewMixinTest with NasaPicturesViewMixin {}
 
 void main() {
-  group('Test mixin.buildVisibleData method...', () {
+  group('Test mixin.buildScreenData method...', () {
     test(
         'WHEN method called THEN it should return the same lenght defined on interval parameter',
         () {
@@ -19,7 +19,7 @@ void main() {
       List<NasaApodResponse> list = List.from(
           NasaApodMock.makeJson().map((i) => NasaApodResponse.fromJson(i)));
 
-      final result = mixin.buildVisibleData(list: list, arguments: arguments);
+      final result = mixin.buildScreenData(list: list, arguments: arguments);
       expect(result.length, interval);
     });
 
@@ -40,7 +40,7 @@ void main() {
         const NasaApodResponse(title: 'This is the moon'),
       ];
 
-      final result = mixin.buildVisibleData(list: list, arguments: arguments);
+      final result = mixin.buildScreenData(list: list, arguments: arguments);
       expect(result.length, 2);
     });
   });

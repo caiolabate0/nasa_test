@@ -24,19 +24,18 @@ class GetNasaPicturesUseCase with NasaPicturesViewMixin {
     // await _localStorage.deleteKey('NasaApodResponse-Fetch');
     try {
       const int picsRequest = 10;
-      const url =
-          'https://api.nasa.gov/planetary/apod?api_key=$API_KEY&count=$picsRequest';
+      const url = 'apod?api_key=$API_KEY&count=$picsRequest';
       final response = await _client.get(url);
       final List<NasaApodResponse> picturesList = List.from(response.data
           .map<NasaApodResponse>((i) => NasaApodResponse.fromJson(i)));
 
       final List<NasaApodResponse> storageList = await _buildData(
           key: NASA_APOD_FETCH_KEY, picturesList: picturesList);
-      return buildVisibleData(list: storageList, arguments: arguments);
+      return buildScreenData(list: storageList, arguments: arguments);
     } catch (e) {
       final List<NasaApodResponse> storageList =
           await _buildData(key: NASA_APOD_FETCH_KEY, picturesList: []);
-      return buildVisibleData(list: storageList, arguments: arguments);
+      return buildScreenData(list: storageList, arguments: arguments);
     }
   }
 

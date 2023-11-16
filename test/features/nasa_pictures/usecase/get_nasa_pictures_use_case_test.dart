@@ -28,8 +28,7 @@ void main() {
 
   setUp(() async {
     networkClientSpy = NetworkClientSpy();
-    localStorage = SharedPreferencesLocalStorage(
-        prefs: () => SharedPreferences.getInstance());
+    localStorage = SharedPreferencesLocalStorage.create();
     SharedPreferences.setMockInitialValues({});
     sut = GetNasaPicturesUseCase(networkClientSpy, localStorage);
     failure = DioException(requestOptions: RequestOptions());

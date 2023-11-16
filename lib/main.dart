@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nasa_test/config/environment/develop_environment.dart';
+import 'package:nasa_test/config/environment/environment.dart';
 import 'package:nasa_test/config/nasa_module.dart';
 
 void main() {
   runApp(ModularApp(
-      module: NasaAppModule(), child: const ProviderScope(child: NasaApp())));
+      module: NasaAppModule(),
+      child: ProviderScope(overrides: [
+        environmentProvider.overrideWithValue(DevelopEnvironment())
+      ], child: const NasaApp())));
 }
 
 class NasaApp extends StatelessWidget {
