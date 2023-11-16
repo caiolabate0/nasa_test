@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nasa_test/config/environment/develop_environment.dart';
 import 'package:nasa_test/config/environment/environment.dart';
-import 'package:nasa_test/config/nasa_module.dart';
+import 'package:nasa_test/config/routes/nasa_module.dart';
 
 void main() {
   runApp(ModularApp(
