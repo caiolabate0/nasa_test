@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:nasa_test/features/nasa_pictures/list/nasa_pictures_list.dart';
+import 'package:nasa_test/features/nasa_pictures/widgets/list/nasa_pictures_list.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_pictures_state.dart';
 import 'package:nasa_test/features/nasa_pictures/notifier/nasa_pictures_notifier.dart';
 

@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nasa_test/features/nasa_pictures/model/nasa_pictures_state.dart';
 import 'package:nasa_test/features/nasa_pictures/notifier/nasa_pictures_notifier.dart';
-import 'package:nasa_test/features/nasa_pictures/list/widgets/picture_row.dart';
+import 'package:nasa_test/features/nasa_pictures/widgets/list/picture_row.dart';
 import 'package:nasa_test/shared/error_page.dart';
 
 class NasaPicturesList extends ConsumerStatefulWidget {
