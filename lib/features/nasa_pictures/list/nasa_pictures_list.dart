@@ -110,7 +110,6 @@ class _NasaPicturesListState extends ConsumerState<NasaPicturesList> {
               },
               error: (error, stackTrace) {
                 return ErrorPage(
-                    key: const Key('nasaPicturesErrorKey'),
                     error: 'Could not load pictures!',
                     onRefresh: () {
                       _refresh();
