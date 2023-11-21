@@ -34,6 +34,7 @@ class _NasaPicturesListState extends ConsumerState<NasaPicturesList> {
     final state = ref.watch(nasaPictureNotifierProvider(
         NasaArguments(interval: interval, filter: filter)));
     return Scaffold(
+        key: const Key('nasaPicturesScaffoldKey'),
         appBar: AppBar(
           title: const Text('Nasa Pictures List'),
         ),
@@ -41,6 +42,7 @@ class _NasaPicturesListState extends ConsumerState<NasaPicturesList> {
           child: state.when(
               data: (data) {
                 return Padding(
+                  key: const Key('nasaPicturesHasDataKey'),
                   padding: const EdgeInsets.all(8.0),
                   child: SingleChildScrollView(
                     child: Column(
@@ -81,8 +83,10 @@ class _NasaPicturesListState extends ConsumerState<NasaPicturesList> {
                         ),
                         (data.pictures.isEmpty)
                             ? const Text(
+                                key: Key('nasaPicturesEmptyWidgetKey'),
                                 'No pictures found. Please search again!')
                             : ListView.builder(
+                                key: const Key('nasaPicturesListWidgetKey'),
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount: data.pictures.length + 1,

@@ -21,8 +21,7 @@ void main() {
   late DioException failure;
 
   const int cardsQt = 10;
-  const String url =
-      'apod?api_key=$API_KEY&count=$cardsQt';
+  const String url = 'apod?api_key=$API_KEY&count=$cardsQt';
 
   When mockCallRequest() => when(() => networkClientSpy.get(url));
 
