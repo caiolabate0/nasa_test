@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:nasa_test/features/nasa_pictures/widgets/details/nasa_pictures_details.dart';
-import 'package:nasa_test/features/nasa_pictures/list/nasa_pictures_list.dart';
 import 'package:nasa_test/app_home_page.dart';
+import 'package:nasa_test/features/nasa_pictures/widgets/list/nasa_pictures_list.dart';
 import 'package:nasa_test/shared/error_page.dart';
 
 class NasaAppModule extends Module {
